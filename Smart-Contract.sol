@@ -1,20 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-contract ErrorHandlingExample {
-    uint public storedValue;
+contract smartContract {
+    uint public value;
 
-    function updateValue(uint newValue) public {
-        assert(newValue != storedValue); // Assert placed here
-        storedValue = newValue;
+    function setValue(uint _value) public {
+        assert(_value != value);  // Assert that the new value is different from the current one.
+        
+        require(_value > 0, "Value must be greater than 0.");  // Ensure the value is greater than zero.
+        
+        value = _value;
     }
 
-    function safeDivision(uint numerator, uint denominator) public pure returns (uint) {
-        if (numerator % denominator != 0) {
-            revert("Numerator is not divisible by the denominator."); // Revert placed here
+    function performDivision(uint _numerator, uint _denominator) public pure returns (uint) {
+        require(_denominator != 0, "Cannot divide by zero.");  // Prevent division by zero.
+
+        if (_numerator % _denominator != 0) {
+            revert("Numerator must be divisible by denominator.");  // Ensure divisibility.
         }
-        
-        require(denominator != 0, "Division by zero is not allowed."); // Require placed here
-        return numerator / denominator;
+
+        return _numerator / _denominator;
     }
 }
