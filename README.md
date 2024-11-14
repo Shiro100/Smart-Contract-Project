@@ -29,25 +29,24 @@ To run this contract, you can use [Remix](https://remix.ethereum.org/), a web-ba
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-contract ErrorHandlerContract {
-    uint public value;
+contract ErrorHandlingExample {
+    uint public storedValue;
 
-    function setValue(uint _value) public {
-        require(_value > 0, "Value must be greater than 0.");
-        assert(_value != value);
-        value = _value;
+    function updateValue(uint newValue) public {
+        assert(newValue != storedValue); // Assert placed here
+        storedValue = newValue;
     }
 
-    function performDivision(uint _numerator, uint _denominator) public pure returns (uint) {
-        require(_denominator != 0, "Cannot divide by zero.");
-
-        if (_numerator % _denominator != 0) {
-            revert("Numerator must be divisible by denominator.");
+    function safeDivision(uint numerator, uint denominator) public pure returns (uint) {
+        if (numerator % denominator != 0) {
+            revert("Numerator is not divisible by the denominator."); // Revert placed here
         }
-
-        return _numerator / _denominator;
+        
+        require(denominator != 0, "Division by zero is not allowed."); // Require placed here
+        return numerator / denominator;
     }
 }
+
 ```
 
 4. **Compile the Code**: In the "Solidity Compiler" tab (on the left sidebar), set the compiler version to `0.8.28` (or any compatible version). Click **Compile `ErrorHandler.sol`**.
