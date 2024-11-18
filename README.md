@@ -5,10 +5,10 @@ A simple Solidity contract that allows setting a state value with validation and
 ## Description
 This Solidity smart contract allows users to interact with a digital parking lot by reserving and releasing parking slots. The contract manages the availability of parking slots, enabling users to reserve a slot, release it once they are done, check the availability of a specific slot, and stop a slot from being used in case of an emergency. The contract ensures that only valid slots are interacted with and that actions like reserving and releasing are done by the rightful user.
 
-Reserve a Slot: Users can reserve a parking slot if it is available.
-Release a Slot: Users can release a slot if they reserved it.
-Check Slot Availability: Users can check if a particular slot is available or reserved.
-Emergency Stop: Admin can stop a slot from being used in an emergency, provided the slot is not already reserved.
+*Reserve a Slot: Users can reserve a parking slot if it is available.
+*Release a Slot: Users can release a slot if they reserved it.
+*Check Slot Availability: Users can check if a particular slot is available or reserved.
+*Emergency Stop: Admin can stop a slot from being used in an emergency, provided the slot is not already reserved.
 
 ## Getting Started
 ### Executing Program
