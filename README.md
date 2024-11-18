@@ -91,6 +91,7 @@ contract ParkingLot {
         slot.reservedBy = address(0);
     }
 }
+
 ```
 
 4. **Compile the Contract:**
